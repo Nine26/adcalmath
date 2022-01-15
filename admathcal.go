@@ -73,8 +73,8 @@ func main() {
 
 			input5, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 
-			fmt.Println("answer = ", answer*input5)
-			fmt.Println("press any key to close")
+			fmt.Println("\nanswer = ", answer*input5)
+			fmt.Println("\npress any key to close")
 			scanner.Scan()
 
 		}
@@ -103,8 +103,8 @@ func main() {
 
 			answer1 := answer / 2
 
-			fmt.Println("answer = ", answer1*input8)
-			fmt.Println("press any key to close")
+			fmt.Println("\nanswer = ", answer1*input8)
+			fmt.Println("\npress any key to close")
 			scanner.Scan()
 
 		}
@@ -135,14 +135,14 @@ func main() {
 
 			var answer3 = (answer1 * float64(input8))
 
-			fmt.Print("side length right? :  ")
+			fmt.Print("side length ? :  ")
 
 			scanner.Scan()
 
 			input9, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 
-			fmt.Print("answer = ", answer3*float64(input9))
-			fmt.Println("press any key to close")
+			fmt.Print("\nanswer = ", answer3*float64(input9))
+			fmt.Println("\npress any key to close")
 			scanner.Scan()
 
 		}
@@ -179,16 +179,16 @@ func main() {
 
 			if input1 == 1 {
 
-				fmt.Println("answer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
 			if input1 == 2 {
 
-				fmt.Println("answer: ", answer_notrounded)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", answer_notrounded)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -207,7 +207,7 @@ func main() {
 
 			answer_notrounded := (answer1 * float64(2*math.Pi))
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
@@ -216,16 +216,16 @@ func main() {
 
 			if input1 == 1 {
 
-				fmt.Println("answer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
 			if input1 == 2 {
 
-				fmt.Println("answer: ", answer_notrounded)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", answer_notrounded)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -242,7 +242,7 @@ func main() {
 
 			var answer_notrounded = (float64(input) / (2 * math.Pi))
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
@@ -251,16 +251,16 @@ func main() {
 
 			if input1 == 1 {
 
-				fmt.Println("answer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
 			if input1 == 2 {
 
-				fmt.Println("answer: ", answer_notrounded)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", answer_notrounded)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -275,7 +275,7 @@ func main() {
 
 			input1, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 
-			fmt.Print("denominator? :  ")
+			fmt.Print("\ndenominator? :  ")
 
 			scanner.Scan()
 
@@ -283,7 +283,7 @@ func main() {
 
 			var answer = float64(input1) / float64(input2)
 
-			fmt.Print("radius? :  ")
+			fmt.Print("\nradius? :  ")
 
 			scanner.Scan()
 
@@ -291,7 +291,7 @@ func main() {
 
 			var answer_notrounded = (float64(answer)*(2*math.Pi)*float64(input3) + float64(2*input3))
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
@@ -300,16 +300,16 @@ func main() {
 
 			if input4 == 1 {
 
-				fmt.Println("answer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
 			if input4 == 2 {
 
-				fmt.Println("answer: ", answer_notrounded)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", answer_notrounded)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -327,7 +327,7 @@ func main() {
 
 			var answer_notrounded = (float64(0.5)*(2*math.Pi)*float64(answer) + float64(2*answer))
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
@@ -361,7 +361,7 @@ func main() {
 
 			var answer_notrounded = (math.Pi * float64(input3*input3))
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
@@ -370,16 +370,16 @@ func main() {
 
 			if input4 == 1 {
 
-				fmt.Println("answer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
 			if input4 == 2 {
 
-				fmt.Println("answer: ", answer_notrounded)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", answer_notrounded)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -397,7 +397,7 @@ func main() {
 
 			var answer_notrounded = (math.Pi * float64(answer*answer))
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
@@ -414,8 +414,8 @@ func main() {
 
 			if input4 == 2 {
 
-				fmt.Println("answer: ", answer_notrounded)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", answer_notrounded)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -442,17 +442,17 @@ func main() {
 
 			if input4 == 1 {
 
-				fmt.Println("answer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
 			if input4 == 2 {
 
-				fmt.Println("answer: ", answer_notrounded)
+				fmt.Println("\nanswer: ", answer_notrounded)
 
-				fmt.Println("press any key to close")
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
