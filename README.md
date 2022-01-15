@@ -4,5 +4,7 @@ it has volume of shapes and how to work out different circles
 
 will add more features later but this is it for now 
 
-To run enter the directory you installed it in and enter go run adcalmath.go
+To run enter the directory you installed it in and enter go run admathcal.go
+To build enter the directory you installed it in and enter go build admathcal.go
+
 
