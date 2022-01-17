@@ -12,15 +12,120 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 
-	fmt.Printf("\n1)volume of prism\n\n2)circles\n\n3)exit\n")
+	fmt.Printf("\n1)volume of prism\n\n2)circles\n\n3)solving rational numbers with coefficients\n\n4)perimeter of various shapes\n\n00)exit\n")
 	fmt.Print("\npick a number: ")
 
 	scanner.Scan()
 
 	input00, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 
-	if input00 == 3 {
+	if input00 == 00 {
 		os.Exit(0)
+	}
+
+	if input00 == 4 {
+
+		fmt.Printf("\n1)permiter of rectangle") //will add more but this is it for now
+		fmt.Print("\n\nplease pick a number: ")
+		scanner.Scan()
+
+		input, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+		if input == 1 {
+
+			fmt.Printf("\nwidth?: ")
+			scanner.Scan()
+
+			input1, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Printf("\nlength?: ")
+			scanner.Scan()
+
+			input2, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			var calcs = float64(input1)*2 + float64(input2)*2
+
+			fmt.Println("\nanswer: ", calcs)
+
+		}
+
+	}
+
+	if input00 == 3 {
+
+		fmt.Printf("\n1)one fraction\n\n2)two fractions") //unfinished code so there might be bugs and wrong answers
+		fmt.Print("\n\nplease pick a number: ")
+
+		scanner.Scan()
+
+		input0, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+		if input0 == 1 {
+
+			fmt.Printf("\nwhat is your numerator?: ")
+			scanner.Scan()
+
+			input, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Printf("\nwhat is your denominator?: ")
+			scanner.Scan()
+
+			input1, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Printf("\nrational number?: ")
+			scanner.Scan()
+
+			input2, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			var answer = float64(input1) * float64(input2)
+
+			fmt.Print("\nanswer: ", float64(answer)/float64(input))
+
+		}
+		if input0 == 2 {
+
+			fmt.Print("\n\nwhat is your whole number: ")
+			scanner.Scan()
+
+			input, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Printf("\n\nwhat is your numerator?: ")
+			scanner.Scan()
+
+			input1, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Printf("\n\nwhat is your denominator?: ")
+			scanner.Scan()
+
+			input2, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			var calcs = float64(input)*float64(input2) + float64(input1)
+
+			fmt.Print("\n\nwhat is your other whole number: ")
+			scanner.Scan()
+
+			input3, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Printf("\n\nwhat is your numerator?: ")
+			scanner.Scan()
+
+			input4, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Printf("\n\nwhat is your denominator?: ")
+			scanner.Scan()
+
+			input5, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			var calcs1 = float64(input3)*float64(input5) + float64(input4)
+			var improper_fraction1 = float64(calcs1) / float64(input4)
+
+			var calculations = (improper_fraction1 * float64(input2))
+			var calculations1 = (calcs * float64(input5))
+
+			fmt.Print("\n\nanswer: ", float64(calculations)/float64(calculations1))
+
+		}
+
 	}
 
 	if input00 == 1 {
