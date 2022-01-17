@@ -152,7 +152,7 @@ func main() {
 			input2, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 
 			fmt.Print("\nanswer = ", input*input2)
-			fmt.Println("press any key to close")
+			fmt.Println("\npress any key to close")
 			scanner.Scan()
 		}
 
