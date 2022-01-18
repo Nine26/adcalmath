@@ -12,7 +12,7 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 
-	fmt.Printf("visit: https://github.com/Nine26/adcalmath for more updates")
+	fmt.Printf("\n\nvisit: https://github.com/Nine26/adcalmath for more updates\n")
 	fmt.Printf("\n1)volume of prism\n\n2)circles\n\n2.1)area of cylinder\n\n3)solving rational numbers with coefficients\n\n4)perimeter of various shapes\n\n5)area of various shapes\n\n00)exit\n")
 	fmt.Print("\npick a number: ")
 
