@@ -5,8 +5,50 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"os/exec"
+	"runtime"
 	"strconv"
 )
+
+//unfinished but will make more changes in the future
+var clear map[string]func()
+
+func init() {
+	clear = make(map[string]func())
+	clear["linux"] = func() {
+		cmd := exec.Command("clear")
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+	clear["windows"] = func() {
+		cmd := exec.Command("cmd", "/c", "cls")
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+	clear["mac"] = func() {
+		cmd := exec.Command("clear")
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+}
+
+func CallClear() {
+	value, ok := clear[runtime.GOOS]
+	if ok {
+		value()
+	} else {
+		panic("Your platform is unsupported! I can't clear terminal screen")
+	}
+}
+
+func HCF(a, b int) int {
+	for b != 0 {
+		t := b
+		b = a % b
+		a = t
+	}
+	return a
+}
 
 func main() {
 
@@ -19,9 +61,50 @@ func main() {
 	scanner.Scan()
 
 	input00, _ := strconv.ParseFloat(scanner.Text(), 64)
+	CallClear()
 
 	if input00 == 00 {
 		os.Exit(0)
+	}
+
+	if input00 == 6 {
+		fmt.Println("1)HCF of a numeber\n\n2)simplify a fraction where you have to find HCF")
+		scanner.Scan()
+		input, _ := strconv.ParseFloat(scanner.Text(), 64)
+
+		if input == 1 {
+			fmt.Printf("\nfactor1?: ")
+			scanner.Scan()
+
+			input1, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Printf("\nfactor2?: ")
+			scanner.Scan()
+
+			input2, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Println("answer: ", HCF(int(input1), int(input2)))
+		}
+
+		if input == 2 {
+			fmt.Printf("\nnumerator?: ")
+			scanner.Scan()
+
+			input1, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			fmt.Printf("\ndenominator?: ")
+			scanner.Scan()
+
+			input2, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+
+			var HCF = HCF(int(input1), int(input2))
+
+			fmt.Println("answer: ")
+			fmt.Println(float64(input1) / float64(HCF))
+			fmt.Println("-")
+			fmt.Println(float64(input2) / float64(HCF))
+
+		}
 	}
 
 	if input00 == 4 {
@@ -31,6 +114,7 @@ func main() {
 		scanner.Scan()
 
 		input, _ := strconv.ParseFloat(scanner.Text(), 64)
+		CallClear()
 
 		if input == 1 {
 
@@ -47,6 +131,26 @@ func main() {
 			var calcs = float64(0.5) * float64(input1) * float64(input2)
 
 			fmt.Println("\nanswer: ", calcs)
+
+			fmt.Printf("\n\nshow workings? ")
+			fmt.Printf("\n[Y]es or [N]o?:  ")
+			scanner.Scan()
+
+			input3, _ := scanner.Text(), 64
+
+			if input3 == "Y" || input3 == "y" || input3 == "Yes" || input3 == "yes" {
+				fmt.Println("\n\n1/2(0.5) x", input1, "x", input2, " = ", calcs)
+				fmt.Printf("Press any key to close")
+				scanner.Scan()
+			}
+
+			if input3 == "N" || input3 == "n" || input3 == "No" || input3 == "no" {
+				fmt.Printf("Press any key to close")
+				scanner.Scan()
+			}
+
+			fmt.Print("Press any key to close")
+			scanner.Scan()
 
 		}
 
@@ -67,14 +171,36 @@ func main() {
 
 			fmt.Println("\nanswer: ", calcs/2)
 
+			fmt.Print("\n\nshow workings?: ")
+			fmt.Printf("\n[Y]es or [N]o?:  ")
+
+			scanner.Scan()
+
+			input3, _ := scanner.Text(), 64
+
+			if input3 == "Y" || input3 == "y" || input3 == "Yes" || input3 == "yes" {
+				fmt.Println(input1, "x", input2, " = ", calcs/2)
+
+				fmt.Printf("\n\nPress any key to close")
+				scanner.Scan()
+
+			}
+
+			if input3 == "N" || input3 == "n" || input3 == "No" || input3 == "no" {
+				fmt.Printf("\n\nPress any key to close")
+				scanner.Scan()
+			}
+
 		}
 
 	}
 
 	if input00 == 3 {
 
-		fmt.Printf("\n1)one fraction\n\n2)two fractions") //unfinished code so there might be bugs and wrong answers
+		fmt.Printf("\n1)one fraction\n\n2)two fractions")
 		fmt.Print("\n\nplease pick a number: ")
+		// not bothered to finish this but u can if u want
+		//unfinished code so there might be bugs and wrong answers//unfinished code so there might be bugs and wrong answers
 
 		scanner.Scan()
 
@@ -100,6 +226,7 @@ func main() {
 			var answer = float64(input1) * float64(input2)
 
 			fmt.Print("\nanswer: ", float64(answer)/float64(input))
+			fmt.Println("\npress any key to close")
 
 		}
 		if input0 == 2 {
@@ -143,6 +270,7 @@ func main() {
 			var calculations1 = (calcs * float64(input5))
 
 			fmt.Print("\n\nanswer: ", float64(calculations)/float64(calculations1))
+			fmt.Println("\npress any key to close")
 
 		}
 
@@ -156,6 +284,7 @@ func main() {
 		scanner.Scan()
 
 		input0, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+		CallClear()
 
 		if input0 == 1 {
 
@@ -229,6 +358,7 @@ func main() {
 			answer1 := answer / 2
 
 			fmt.Println("\nanswer = ", answer1*input8)
+
 			fmt.Println("\npress any key to close")
 			scanner.Scan()
 
@@ -294,25 +424,26 @@ func main() {
 
 			answer_notrounded := (answer1 * float64(2*math.Pi))
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
-			fmt.Print("\n\npick a number: ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
+			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input1, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input4, _ := scanner.Text(), 64
 
-			if input1 == 1 {
+			if input4 == "Y" || input4 == "y" || input4 == "Yes" || input4 == "yes" {
 
 				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("\n\npress any key to close")
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
-			if input1 == 2 {
+			if input4 == "N" || input4 == "n" || input4 == "No" || input4 == "no" {
 
 				fmt.Println("\nanswer: ", answer_notrounded)
-				fmt.Println("\n\npress any key to close")
+
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -331,25 +462,26 @@ func main() {
 
 			answer_notrounded := (answer1 * float64(2*math.Pi))
 
-			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
-			fmt.Print("\n\npick a number: ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
+			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input1, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input4, _ := scanner.Text(), 64
 
-			if input1 == 1 {
+			if input4 == "Y" || input4 == "y" || input4 == "Yes" || input4 == "yes" {
 
 				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("\n\npress any key to close")
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
-			if input1 == 2 {
+			if input4 == "N" || input4 == "n" || input4 == "No" || input4 == "no" {
 
 				fmt.Println("\nanswer: ", answer_notrounded)
-				fmt.Println("\n\npress any key to close")
+
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -365,15 +497,14 @@ func main() {
 			input, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 
 			var answer_notrounded = (float64(input) / (2 * math.Pi))
-
-			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
-			fmt.Print("\n\npick a number: ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
+			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input1, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input4, _ := scanner.Text(), 64
 
-			if input1 == 1 {
+			if input4 == "Y" || input4 == "y" || input4 == "Yes" || input4 == "yes" {
 
 				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
 				fmt.Println("\npress any key to close")
@@ -381,14 +512,14 @@ func main() {
 
 			}
 
-			if input1 == 2 {
+			if input4 == "N" || input4 == "n" || input4 == "No" || input4 == "no" {
 
 				fmt.Println("\nanswer: ", answer_notrounded)
-				fmt.Println("\n\npress any key to close")
+
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
-
 		}
 
 		if input0 == 4 {
@@ -415,14 +546,14 @@ func main() {
 
 			var answer_notrounded = (float64(answer)*(2*math.Pi)*float64(input3) + float64(2*input3))
 
-			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input4, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input4, _ := scanner.Text(), 64
 
-			if input4 == 1 {
+			if input4 == "Y" || input4 == "y" || input4 == "Yes" || input4 == "yes" {
 
 				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
 				fmt.Println("\npress any key to close")
@@ -430,10 +561,11 @@ func main() {
 
 			}
 
-			if input4 == 2 {
+			if input4 == "N" || input4 == "n" || input4 == "No" || input4 == "no" {
 
 				fmt.Println("\nanswer: ", answer_notrounded)
-				fmt.Println("\n\npress any key to close")
+
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -451,25 +583,26 @@ func main() {
 
 			var answer_notrounded = (float64(0.5)*(2*math.Pi)*float64(answer) + float64(2*answer))
 
-			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
-			fmt.Print("\n\npick a number: ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
+			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input4, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input4, _ := scanner.Text(), 64
 
-			if input4 == 1 {
+			if input4 == "Y" || input4 == "y" || input4 == "Yes" || input4 == "yes" {
 
-				fmt.Println("answer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
-			if input4 == 2 {
+			if input4 == "N" || input4 == "n" || input4 == "No" || input4 == "no" {
 
-				fmt.Println("answer: ", answer_notrounded)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", answer_notrounded)
+
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -485,14 +618,14 @@ func main() {
 
 			var answer_notrounded = (math.Pi * float64(input3*input3))
 
-			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
-			fmt.Print("\n\npick a number: ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
+			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input4, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input4, _ := scanner.Text(), 64
 
-			if input4 == 1 {
+			if input4 == "Y" || input4 == "y" || input4 == "Yes" || input4 == "yes" {
 
 				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
 				fmt.Println("\npress any key to close")
@@ -500,10 +633,11 @@ func main() {
 
 			}
 
-			if input4 == 2 {
+			if input4 == "N" || input4 == "n" || input4 == "No" || input4 == "no" {
 
 				fmt.Println("\nanswer: ", answer_notrounded)
-				fmt.Println("\n\npress any key to close")
+
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
@@ -521,24 +655,25 @@ func main() {
 
 			var answer_notrounded = (math.Pi * float64(answer*answer))
 
-			fmt.Print("\nround answer to 1dp?\n1 = yes\n2 = no ")
-			fmt.Print("\n\npick a number: ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
+			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input4, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input4, _ := scanner.Text(), 64
 
-			if input4 == 1 {
+			if input4 == "Y" || input4 == "y" || input4 == "Yes" || input4 == "yes" {
 
-				fmt.Println("answer: ", math.Round(answer_notrounded*10)/10)
-				fmt.Println("press any key to close")
+				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
+				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
 			}
 
-			if input4 == 2 {
+			if input4 == "N" || input4 == "n" || input4 == "No" || input4 == "no" {
 
 				fmt.Println("\nanswer: ", answer_notrounded)
+
 				fmt.Println("\npress any key to close")
 				scanner.Scan()
 
@@ -557,14 +692,14 @@ func main() {
 
 			var answer_notrounded = (math.Sqrt(answer))
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input4, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input4, _ := scanner.Text(), 64
 
-			if input4 == 1 {
+			if input4 == "Y" || input4 == "y" || input4 == "Yes" || input4 == "yes" {
 
 				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
 				fmt.Println("\npress any key to close")
@@ -572,7 +707,7 @@ func main() {
 
 			}
 
-			if input4 == 2 {
+			if input4 == "N" || input4 == "n" || input4 == "No" || input4 == "no" {
 
 				fmt.Println("\nanswer: ", answer_notrounded)
 
@@ -609,7 +744,7 @@ func main() {
 
 			var answer_notrounded = math.Pi * float64(input3) * float64(input3) * float64(input4)
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
@@ -652,14 +787,14 @@ func main() {
 			var answer = float64(input3) / 2
 			var answer_notrounded = math.Pi * float64(answer) * float64(answer) * float64(input4)
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input5, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input5, _ := scanner.Text(), 64
 
-			if input5 == 1 {
+			if input5 == "Y" || input5 == "y" || input5 == "Yes" || input5 == "yes" {
 
 				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
 				fmt.Println("\npress any key to close")
@@ -667,7 +802,7 @@ func main() {
 
 			}
 
-			if input5 == 2 {
+			if input5 == "N" || input5 == "n" || input5 == "No" || input5 == "no" {
 
 				fmt.Println("\nanswer: ", answer_notrounded)
 
@@ -694,14 +829,14 @@ func main() {
 			var answer = float64(input3)
 			var answer_notrounded = 2*math.Pi*float64(answer)*float64(answer) + 2*math.Pi*float64(answer)*float64(input4)
 
-			fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+			fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
 			fmt.Print("\npick a number: ")
 
 			scanner.Scan()
 
-			input5, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+			input5, _ := scanner.Text(), 64
 
-			if input5 == 1 {
+			if input5 == "Y" || input5 == "y" || input5 == "Yes" || input5 == "yes" {
 
 				fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
 				fmt.Println("\npress any key to close")
@@ -709,7 +844,7 @@ func main() {
 
 			}
 
-			if input5 == 2 {
+			if input5 == "N" || input5 == "n" || input5 == "No" || input5 == "no" {
 
 				fmt.Println("\nanswer: ", answer_notrounded)
 
@@ -735,14 +870,14 @@ func main() {
 				var answer = float64(input3) / 2
 				var answer_notrounded = 2*math.Pi*float64(answer)*float64(answer) + 2*math.Pi*float64(answer)*float64(input4)
 
-				fmt.Print("round answer to 1dp?\n1 = yes\n2 = no ")
+				fmt.Print("round answer to 1dp?\n[Y]es or [N]o ")
 				fmt.Print("\npick a number: ")
 
 				scanner.Scan()
 
-				input5, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+				input5, _ := scanner.Text(), 64
 
-				if input5 == 1 {
+				if input5 == "Y" || input5 == "y" || input5 == "Yes" || input5 == "yes" {
 
 					fmt.Println("\nanswer: ", math.Round(answer_notrounded*10)/10)
 					fmt.Println("\npress any key to close")
@@ -750,7 +885,7 @@ func main() {
 
 				}
 
-				if input5 == 2 {
+				if input5 == "N" || input5 == "n" || input5 == "No" || input5 == "no" {
 
 					fmt.Println("\nanswer: ", answer_notrounded)
 
