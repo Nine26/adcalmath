@@ -1,6 +1,6 @@
 This is a simple advanced math calculator to help me with my maths work
 
-it has different calculations of math
+it has different calculations 
 
  Im going to add more features later but this is it for now 
 
